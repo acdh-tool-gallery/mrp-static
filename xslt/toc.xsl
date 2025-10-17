@@ -41,7 +41,10 @@
                                 <xsl:for-each
                                     select="collection('../data/editions?select=*.xml')//tei:TEI">
                                     <xsl:variable name="full_path">
-                                        <xsl:value-of select="document-uri(/)"/>
+                                        <xsl:value-of select="@xml:id"/>
+                                    </xsl:variable>
+                                    <xsl:variable name="title">
+                                        <xsl:value-of select=".//tei:titleStmt/tei:title[@level='a']/text()"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
@@ -56,7 +59,7 @@
                                         </td>
                                         <td>
                                             <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                                select="$title"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="tokenize($full_path, '/')[last()]"
