@@ -52,27 +52,23 @@
                             <tbody>
                                 <xsl:for-each
                                     select="collection('../data/editions?select=*.xml')//tei:TEI">
-                                    <xsl:variable name="full_path">
-                                        <xsl:value-of select="document-uri(/)"/>
+                                    <xsl:variable name="docId">
+                                        <xsl:value-of select="replace(@xml:id, '.xml', '.html')"/>
                                     </xsl:variable>
                                     <tr>
                                         <td>
                                             <a>
                                                 <xsl:attribute name="href">
-                                                  <xsl:value-of
-                                                  select="replace(tokenize($full_path, '/')[last()], '.xml', '.html')"
-                                                  />
+                                                    <xsl:value-of select="$docId"/>
                                                 </xsl:attribute>
                                                 <i class="bi bi-link-45deg"/>
                                             </a>
                                         </td>
                                         <td>
-                                            <xsl:value-of
-                                                select=".//tei:titleStmt/tei:title[1]/text()"/>
+                                            <xsl:value-of select=".//tei:titleStmt/tei:title[@level='a']/text()"/>
                                         </td>
                                         <td>
-                                            <xsl:value-of select="tokenize($full_path, '/')[last()]"
-                                            />
+                                            <xsl:value-of select="$docId"/>
                                         </td>
                                     </tr>
                                 </xsl:for-each>
