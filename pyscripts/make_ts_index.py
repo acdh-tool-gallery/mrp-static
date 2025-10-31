@@ -71,7 +71,7 @@ for x in tqdm(files, total=len(files)):
     record = {}
     record["id"] = os.path.split(x)[-1].replace(".xml", "")
     record["rec_id"] = os.path.split(x)[-1].replace(".xml", "")
-    record["title"] = doc.any_xpath(".//tei:titleStmt/tei:title[1]")[0].text
+    record["title"] = doc.any_xpath(".//tei:titleStmt/tei:title[@level='a']")[0].text
     record["full_text"] = extract_fulltext(body, tag_blacklist=tag_blacklist)
 
     record["person_entities"] = []

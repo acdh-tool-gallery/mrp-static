@@ -40,9 +40,9 @@
                     <xsl:with-param name="pageId" select="$link"></xsl:with-param>
                     <xsl:with-param name="zoteroTitle" select="$doc_title"></xsl:with-param>
                 </xsl:call-template>
-                <!-- Provide the names of the authors/editors of the current unit, ideally fetched from the data via xslt or hard coded as below -->
-                <meta name="citation_author" content="Foo, Bar"/>
-                <meta name="citation_author" content="Bar, Foo"/> 
+                <xsl:for-each select=".//tei:titleStmt/tei:editor/tei:persName">
+                    <meta name="citation_author" content="{string-join(.//text())}"/>
+                </xsl:for-each>
             </head>
             <body class="d-flex flex-column h-100">
                 <xsl:call-template name="nav_bar"/>

@@ -57,6 +57,8 @@
                                     <th scope="col" width="20" tabulator-formatter="html" tabulator-headerSort="false" tabulator-download="false">#</th>
                                     <th scope="col" tabulator-headerFilter="input">Nachname</th>
                                     <th scope="col" tabulator-headerFilter="input">Vorname</th>
+                                    <th scope="col" tabulator-headerFilter="input">Tätigkeit</th>
+                                    <th scope="col" tabulator-headerFilter="input">Erwähnungen</th>
                                     <th scope="col" tabulator-headerFilter="input">ID</th>
                                 </tr>
                             </thead>
@@ -79,6 +81,12 @@
                                         </td>
                                         <td>
                                             <xsl:value-of select=".//tei:forename/text()"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="string-join(.//tei:occupation, ', ')"/>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="count(.//tei:noteGrp/tei:note[@type='mentions'])"/>
                                         </td>
                                         <td>
                                             <xsl:value-of select="$id"/>
