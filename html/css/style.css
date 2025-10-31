@@ -13,3 +13,8 @@ div#map {
     text-decoration: underline dotted;
     cursor: pointer;
 }
+
+.footer-logo {
+     max-width: 50%;
+     max-height: 150px;
+ }
