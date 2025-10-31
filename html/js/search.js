@@ -1,6 +1,6 @@
 const indexName = "mrp-static";
 
-const apiKey = "0drlT8CHD6T9z8QxQjYXvSWT2dZ75nPv"; /* change this */
+const apiKey = "phyoDpHaKwNePNGrCG4cGSKju3TGW9NF"; /* change this */
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
@@ -80,14 +80,7 @@ search.addWidgets([
               >`
           )}
           <br />
-          ${hit.bibl_entities.map(
-            (item) =>
-              html`<a href="${item.id}.html" class="pe-2 custom-link"
-                ><i class="bi bi-book pe-1"></i>${item.label}</a
-              >`
-          )}
-          <br />
-        </div>`;
+                  </div>`;
       },
     },
   }),
@@ -154,24 +147,6 @@ search.addWidgets([
     showMoreLimit: 50,
     limit: 10,
     searchablePlaceholder: "Suche nach Orten",
-    cssClasses: DEFAULT_CSS_CLASSES,
-  }),
-
-  instantsearch.widgets.panel({
-    collapsed: ({ state }) => {
-      return state.query.length === 0;
-    },
-    templates: {
-      header: "Literatur",
-    },
-  })(instantsearch.widgets.refinementList)({
-    container: "#rf-works",
-    attribute: "bibl_entities.label",
-    searchable: true,
-    showMore: true,
-    showMoreLimit: 50,
-    limit: 10,
-    searchablePlaceholder: "Suche nach Literatur",
     cssClasses: DEFAULT_CSS_CLASSES,
   }),
 

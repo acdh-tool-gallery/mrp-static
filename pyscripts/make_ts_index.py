@@ -111,8 +111,6 @@ for x in tqdm(files, total=len(files)):
         record["bibl_entities"].append(item)
 
     records.append(record)
-    print(record)
-
 
 make_index = client.collections[COLLECTION_NAME].documents.import_(records)
 print(make_index)
